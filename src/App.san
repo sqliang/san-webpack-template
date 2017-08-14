@@ -1,0 +1,47 @@
+<template>
+    <div class="app-container">
+        <header>
+            <p>system——{{titleName}}</p>
+            <h4>this is header</h4>
+        </header>
+        <div id="main"></div>
+        <footer>
+            <p>this is footer</p>
+        </footer>
+    </div>
+</template>
+
+<script>
+    export default {
+        initData() {
+            return {
+                name: 'sqliang'
+            };
+        },
+        compiled() {
+            console.log('App.san---compiled');
+        },
+        inited() {
+            console.log('App.san---inited');
+        },
+        created() {
+            console.log('App.san---created');
+        },
+        attached() {
+            console.log('App.san---attached');
+            // router
+            const router = this.data.get('router');
+            router.setMode('html5');
+            router.start();
+        },
+        detached() {
+            console.log('App.san---detached');
+        },
+        disposed() {
+            console.log('App.san---disposed');
+        },
+        updated() {
+            console.log('App.san---updated');
+        }
+    }
+</script>
