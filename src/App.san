@@ -1,47 +1,105 @@
 <template>
     <div class="app-container">
-        <header>
-            <p>system——{{titleName}}</p>
-            <h4>this is header</h4>
-        </header>
-        <div id="main"></div>
-        <footer>
-            <p>this is footer</p>
-        </footer>
+        <div class="app-drawer">
+            <san-appbar title="{{appTitle}}" class="app-drawer-appbar">
+                <i class="fa fa-paw" slot="left"></i>
+            </san-appbar>
+            <div class="app-drawer-content">
+                <app-menu
+                        menus="{{menus}}"
+                        openToggle="openMenu"
+                        on-select="handleMenuSelect($event)"
+                        selectValue="{{menuVal}}"></app-menu>
+            </div>
+        </div>
+        <san-appbar title="{{navTitle}}" class="app-drawer-appbar">
+            <san-icon-button onclick="toggleMenu($event)" variants="toggle" slot="left">
+                <i class="fa fa-dedent fa-fw"></i>
+            </san-icon-button>
+            <div class="user-info app-follow-list" slot="right">
+                <san-button variants="toggle user-info-box">
+                    {{userName}}
+                </san-button>
+            </div>
+        </san-appbar>
+        <div class="app-content">
+            <div id="main"></div>
+        </div>
     </div>
 </template>
 
 <script>
+    import {router} from 'san-router';
+    import {Row, Col} from 'san-mui/lib/Grid';
+    import AppBar from 'san-mui/lib/AppBar';
+    import AppMenu from './components/AppMenu.san';
+    import {IconButton} from 'san-mui/lib/Button';
+    import {IconMenu, MenuItem} from 'san-mui/lib/Menu';
+    import {Card, CardHeader, CardMedia, CardText, CardTitle} from 'san-mui/lib/Card';
+
     export default {
+        components: {
+            'san-row': Row,
+            'san-col': Col,
+            'san-appbar': AppBar,
+            'app-menu': AppMenu,
+            'san-icon-button': IconButton,
+            'san-icon-menu': IconMenu,
+            'san-menu-item': MenuItem,
+            'san-card': Card,
+            'san-card-header': CardHeader,
+            'san-card-media': CardMedia,
+            'san-card-text': CardText,
+            'san-card-title': CardTitle
+        },
         initData() {
             return {
-                name: 'sqliang'
+                userName: 'sqliang',
+                menuVal: '/',
+                openMenu: false,
             };
         },
-        compiled() {
-            console.log('App.san---compiled');
-        },
-        inited() {
-            console.log('App.san---inited');
-        },
-        created() {
-            console.log('App.san---created');
-        },
         attached() {
-            console.log('App.san---attached');
-            // router
-            const router = this.data.get('router');
             router.setMode('html5');
             router.start();
         },
-        detached() {
-            console.log('App.san---detached');
-        },
-        disposed() {
-            console.log('App.san---disposed');
-        },
-        updated() {
-            console.log('App.san---updated');
+        handleMenuSelect(item) {
+            const value = item.url;
+            if (value) {
+                router.locator.redirect(value);
+            }
         }
     }
 </script>
+
+<style>
+    .app-drawer {
+        width: 200px;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        overflow: auto;
+        box-shadow: 0 4px 10px 0 rgba(255, 255, 255, 0.10);
+        background: #3a3f51;
+    }
+    .app-drawer-appbar {
+        background: #3a3f51;
+        color: #c1c3c9;
+        height: 52px;
+        line-height: 50px;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, .05);
+    }
+    .app-drawer-content {
+        position: absolute;
+        top: 52px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 100;
+        overflow: auto;
+    }
+    .app-content {
+        margin-left: 200px;
+        height: 100%;
+    }
+</style>

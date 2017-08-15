@@ -13,6 +13,10 @@ export default [
         Component: Home
     },
     {
+        rule: '/index',
+        Component: Home
+    },
+    {
         rule: '/about',
         Component: About
     }

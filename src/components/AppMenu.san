@@ -1,0 +1,82 @@
+<template>
+    <div class="app-menu-list">
+        <san-list selectable class="menu-list-group" value="{{selectValue}}">
+            <san-list-item
+                    san-for="menuItem in menus"
+                    primaryText="{{menuItem.name}}"
+                    on-click="listItemSelect(menuItem)"
+                    toggleNested="{{menuItem.children && openToggle}}"
+                    open="{{menuItem.open}}"
+                    value="{{menuItem.url}}">
+                <i class="{{menuItem.icon}}" slot="left"></i>
+                <san-list-item
+                        class="menu-list-group-more"
+                        slot="nested"
+                        san-for="subItem in menuItem.children"
+                        primaryText="subItem.name"
+                        on-click="listItemSelect(subItem)"
+                        value="{{subItem.url}}">
+                    <i class="{{subItem.icon}}" slot="flet"></i>
+                </san-list-item>
+            </san-list-item>
+        </san-list>
+    </div>
+</template>
+
+<script>
+    import {MenuItem, Divider} from 'san-mui/lib/Menu';
+    import {List, ListItem} from 'san-mui/lib/List';
+    import {Icon} from 'san-mui/lib/Icon';
+    import Avatar from 'san-mui/lib/Avatar';
+
+    export default {
+        components: {
+            'san-menu-item': MenuItem,
+            'san-menu-divider': Divider,
+            'san-list': List,
+            'san-list-item': ListItem,
+            'san-icon': Icon,
+            'san-avatar': Avatar
+        },
+        initData() {
+            return {
+                selectValue: -1
+            }
+        },
+        listItemSelect(value) {
+            this.fire('select', value);
+        }
+
+    };
+</script>
+
+<style>
+    .app-menu-list {
+        width: 200px;
+    }
+    .app-menu-list .sm-list {
+        background: #3a3f51;
+        color: #8b8e99;
+        padding: 0;
+    }
+    .app-menu-list .sm-list-item.selected {
+        color: #ffffff;
+    }
+    .app-menu-list .sm-list-item .sm-list-item-expand {
+        width: 40px;
+        height: 40px;
+    }
+    .app-menu-list .sm-list-item .sm-list-item-expand .sm-icon {
+        line-height: 40px;
+    }
+    .app-menu-list .sm-list-item-content {
+        padding-left: 45px !important;
+        padding-top: 13px;
+        padding-bottom: 13px;
+    }
+    .app-menu-list .sm-list-item-content .sm-list-item-primary-text {
+        font-size: 14px;
+    }
+
+
+</style>

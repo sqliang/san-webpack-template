@@ -10,12 +10,13 @@
             return {
                 name: 'sqliang'
             };
+        },
+        route() {
+            const route = this.data.get('route');
+            console.log(route.query.id);
         }
     }
 </script>
 
 <style>
-    .about {
-        background: #cccccc;
-    }
 </style>
