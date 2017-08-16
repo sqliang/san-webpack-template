@@ -1,7 +1,7 @@
 <template>
     <div class="app-container">
         <div class="app-drawer">
-            <san-appbar title="{{appTitle}}" class="app-drawer-appbar">
+            <san-appbar title="{{appTitle}}" class="app-drawer-title">
                 <i class="fa fa-paw" slot="left"></i>
             </san-appbar>
             <div class="app-drawer-content">
@@ -28,66 +28,92 @@
     </div>
 </template>
 
-<script>
-    import {router} from 'san-router';
-    import {Row, Col} from 'san-mui/lib/Grid';
+<script type="text/ecmascript-6">
     import AppBar from 'san-mui/lib/AppBar';
     import AppMenu from './components/AppMenu.san';
     import {IconButton} from 'san-mui/lib/Button';
-    import {IconMenu, MenuItem} from 'san-mui/lib/Menu';
-    import {Card, CardHeader, CardMedia, CardText, CardTitle} from 'san-mui/lib/Card';
 
+    const appTitle = 'XXX管理系统';
+    const menus = [
+        {
+            name: 'Home',
+            url: '/',
+            icon: 'fa fa-list-alt'
+        },
+        {
+            name: 'About',
+            url: '/about',
+            icon: 'fa fa-list-alt'
+        }
+    ];
     export default {
         components: {
-            'san-row': Row,
-            'san-col': Col,
             'san-appbar': AppBar,
             'app-menu': AppMenu,
-            'san-icon-button': IconButton,
-            'san-icon-menu': IconMenu,
-            'san-menu-item': MenuItem,
-            'san-card': Card,
-            'san-card-header': CardHeader,
-            'san-card-media': CardMedia,
-            'san-card-text': CardText,
-            'san-card-title': CardTitle
+            'san-icon-button': IconButton
         },
         initData() {
             return {
+                menus: menus,
+                appTitle: appTitle,
                 userName: 'sqliang',
                 menuVal: '/',
                 openMenu: false,
             };
         },
         attached() {
-            router.setMode('html5');
-            router.start();
+            //使路由生效
+            this.startRoute();
         },
         handleMenuSelect(item) {
             const value = item.url;
             if (value) {
+                const router = this.data.get('router');
                 router.locator.redirect(value);
             }
+        },
+        startRoute() {
+            const router = this.data.get('router');
+            //路由监听
+            router.listen((e, config) => {
+                this.data.set('menuVal', config.rule);
+            });
+            // 路由模式 'html5 | hash'
+            router.setMode('html5');
+            router.start();
         }
     }
 </script>
 
 <style>
     .app-drawer {
-        width: 200px;
         position: fixed;
         top: 0;
         bottom: 0;
+        width: 200px;
         overflow: auto;
         box-shadow: 0 4px 10px 0 rgba(255, 255, 255, 0.10);
         background: #3a3f51;
+        z-index: 100;
     }
-    .app-drawer-appbar {
+    .app-drawer-title {
         background: #3a3f51;
         color: #c1c3c9;
-        height: 52px;
+
+    }
+    .app-drawer-appbar {
+        position: fixed;
+        left: 200px;
+        right: 0;
+        top: 0;
+        width: auto;
+        background: #fff;
+        color: #333;
+        z-index: 10;
+        padding: 0 16px;
+        height: 50px;
         line-height: 50px;
-        box-shadow: 0 2px 2px rgba(0, 0, 0, .05);
+        box-shadow: 0 4px 10px 0 rgba(0,0,0,0.1);
     }
     .app-drawer-content {
         position: absolute;
@@ -99,7 +125,12 @@
         overflow: auto;
     }
     .app-content {
-        margin-left: 200px;
+        position: fixed;
+        top: 52px;
+        left: 200px;
+        bottom: 0;
+        right: 0;
         height: 100%;
+        overflow: auto;
     }
 </style>

@@ -12,10 +12,7 @@ export default [
         rule: '/',
         Component: Home
     },
-    {
-        rule: '/index',
-        Component: Home
-    },
+    
     {
         rule: '/about',
         Component: About
