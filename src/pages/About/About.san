@@ -1,14 +1,236 @@
 <template>
     <div class="about">
-        <h4>this is component about.@ {{name}}</h4>
+        <h3 class="about-title">常用技术周刊</h3>
+        <san-row gutter="{{16}}">
+            <san-col span="8">
+                <san-paper class="paper-card" zDepth="3">
+                    <div class="item">
+                        <div class="logo">
+                            <img src="{{efe}}">
+                            FEX技术周刊
+                        </div>
+                        <div class="desc">
+                            <p>由百度多个遵循统一技术体系的前端团队所组成</p>
+                        </div>
+                    </div>
+                </san-paper>
+            </san-col>
+        </san-row>
+        <h3 class="about-title">常用前端链接</h3>
+        <san-row gutter="{{16}}">
+            <san-col span="8">
+                <san-paper class="paper-card" zDepth="3">
+                    <div class="item">
+                        <div class="logo">
+                            <img src="{{efe}}">
+                            EFE
+                        </div>
+                        <div class="desc">
+                            <p>由百度多个遵循统一技术体系的前端团队所组成</p>
+                        </div>
+                    </div>
+                </san-paper>
+            </san-col>
+            <san-col span="8">
+                <san-paper class="paper-card" zDepth="3">
+                    <div class="item">
+                        <div class="logo">
+                            <img src="{{efe}}">
+                            FEX
+                        </div>
+                        <div class="desc">
+                            <p>百度Web前端研发部</p>
+                        </div>
+                    </div>
+                </san-paper>
+            </san-col>
+            <san-col span="8">
+                <san-paper class="paper-card" zDepth="3">
+                    <div class="item">
+                        <div class="logo">
+                            <img src="{{efe}}">
+                            腾讯AlloyTeam团队
+                        </div>
+                        <div class="desc">
+                            <p>腾讯Web前端团队</p>
+                        </div>
+                    </div>
+                </san-paper>
+            </san-col>
+            <san-col span="8">
+                <san-paper class="paper-card" zDepth="3">
+                    <div class="item">
+                        <div class="logo">
+                            <img src="{{efe}}">
+                            ISUX
+                        </div>
+                        <div class="desc">
+                            <p>腾讯社交用户体验设计</p>
+                        </div>
+                    </div>
+                </san-paper>
+            </san-col>
+            <san-col span="8">
+                <san-paper class="paper-card" zDepth="3">
+                    <div class="item">
+                        <div class="logo">
+                            <img src="{{efe}}">
+                            淘宝前端团队（FED）
+                        </div>
+                        <div class="desc">
+                            <p>用技术为体验提供无可能</p>
+                        </div>
+                    </div>
+                </san-paper>
+            </san-col>
+            <san-col span="8">
+                <san-paper class="paper-card" zDepth="3">
+                    <div class="item">
+                        <div class="logo">
+                            <img src="{{efe}}">
+                            凹凸实验室
+                        </div>
+                        <div class="desc">
+                            <p>京东用户体验设计部出品</p>
+                        </div>
+                    </div>
+                </san-paper>
+            </san-col>
+            <san-col span="8">
+                <san-paper class="paper-card" zDepth="3">
+                    <div class="item">
+                        <div class="logo">
+                            <img src="{{efe}}">
+                            阿里巴巴国际UED团队
+                        </div>
+                        <div class="desc">
+                            <p>在更新的屏幕里创造出更好的产品和更优的体验</p>
+                        </div>
+                    </div>
+                </san-paper>
+            </san-col>
+            <san-col span="8">
+                <san-paper class="paper-card" zDepth="3">
+                    <div class="item">
+                        <div class="logo">
+                            <img src="{{efe}}">
+                            掘金
+                        </div>
+                        <div class="desc">
+                            <p>只有高手分享的中文技术社区</p>
+                        </div>
+                    </div>
+                </san-paper>
+            </san-col>
+            <san-col span="8">
+                <san-paper class="paper-card" zDepth="3">
+                    <div class="item">
+                        <div class="logo">
+                            <img src="{{efe}}">
+                            Stack Overflow
+                        </div>
+                        <div class="desc">
+                            <p>编程相关的IT技术问答网站</p>
+                        </div>
+                    </div>
+                </san-paper>
+            </san-col>
+            <san-col span="8">
+                <san-paper class="paper-card" zDepth="3">
+                    <div class="item">
+                        <div class="logo">
+                            <img src="{{efe}}">
+                            GitHub
+                        </div>
+                        <div class="desc">
+                            <p>面向开源及私有软件项目的git托管平台</p>
+                        </div>
+                    </div>
+                </san-paper>
+            </san-col>
+            <san-col span="8">
+                <san-paper class="paper-card" zDepth="3">
+                    <div class="item">
+                        <div class="logo">
+                            <img src="{{efe}}">
+                            V2EX
+                        </div>
+                        <div class="desc">
+                            <p>一个关于分享和探索的地方</p>
+                        </div>
+                    </div>
+                </san-paper>
+            </san-col>
+            <san-col span="8">
+                <san-paper class="paper-card" zDepth="3">
+                    <div class="item">
+                        <div class="logo">
+                            <img src="{{efe}}">
+                            CNode
+                        </div>
+                        <div class="desc">
+                            <p>Node.js专业中文社区</p>
+                        </div>
+                    </div>
+                </san-paper>
+            </san-col>
+            <san-col span="8">
+                <san-paper class="paper-card" zDepth="3">
+                    <div class="item">
+                        <div class="logo">
+                            <img src="{{efe}}">
+                            Smashingmagazine
+                        </div>
+                        <div class="desc">
+                            <p>一个web技术类的博客杂志站点</p>
+                        </div>
+                    </div>
+                </san-paper>
+            </san-col>
+            <san-col span="8">
+                <san-paper class="paper-card" zDepth="3">
+                    <div class="item">
+                        <div class="logo">
+                            <img src="{{efe}}">
+                            RxJs
+                        </div>
+                        <div class="desc">
+                            <p>提供强大的数据流组合和控制能力的Reactive编程库</p>
+                        </div>
+                    </div>
+                </san-paper>
+            </san-col>
+            <san-col span="8">
+                <san-paper class="paper-card" zDepth="3">
+                    <div class="item">
+                        <div class="logo">
+                            <img src="{{efe}}">
+                            Vue
+                        </div>
+                        <div class="desc">
+                            <p>构建数据驱动的web界面的渐进式框架</p>
+                        </div>
+                    </div>
+                </san-paper>
+            </san-col>
+        </san-row>
     </div>
 </template>
 
 <script>
+    import {Row,Col} from 'san-mui/lib/Grid';
+    import Paper from 'san-mui/lib/Paper';
+    import efe from './efe-favicon.png';
     export default {
+        components: {
+            'san-row': Row,
+            'san-col': Col,
+            'san-paper': Paper
+        },
         initData() {
             return {
-                name: 'sqliang'
+                name: 'sqliang',
+                efe: efe
             };
         },
         route() {
@@ -19,4 +241,36 @@
 </script>
 
 <style>
+    .about {
+        margin-bottom: 20px;
+    }
+    .about-title {
+        margin-bottom: 10px;
+    }
+    .paper-card {
+        margin-bottom: 20px;
+        height: 100px;
+        width: 100%;
+    }
+    .paper-card .item {
+        padding: 8px;
+    }
+    .paper-card .item .logo {
+        height: 40px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #3273dc;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .paper-card .item .logo img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        vertical-align: middle;
+    }
+    .paper-card .item .desc {
+        margin-top: 20px;
+    }
 </style>
