@@ -36,12 +36,17 @@
     const appTitle = 'XXX管理系统';
     const menus = [
         {
-            name: 'Home',
+            name: '主页',
             url: '/',
             icon: 'fa fa-list-alt'
         },
         {
-            name: 'About',
+            name: '列表',
+            url: '/list',
+            icon: 'fa fa-list-alt'
+        },
+        {
+            name: '常用链接',
             url: '/about',
             icon: 'fa fa-list-alt'
         }

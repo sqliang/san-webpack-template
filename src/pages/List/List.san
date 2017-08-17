@@ -1,0 +1,101 @@
+<template>
+    <div class="list">
+        <div class="btn-group">
+           <router-link san-for="item in tags" to="/list/tag/{{item.id}}">
+               <ui-button
+                       san-if="item.id == tagId"
+                       variants="raised info">
+                   {{item.title}}
+               </ui-button>
+               <ui-button san-else variants="raised secondery">
+                   {{item.title}}
+               </ui-button>
+           </router-link>
+            <router-link class="add" to="/add">
+                <icon-button variants="raised info">
+                    add
+                </icon-button>
+            </router-link>
+        </div>
+        <san-paper zDepth="3">
+            <san-table class="sm-table-hoverable">
+                <san-thead slot="header">
+                    <san-tr>
+                        <san-th tooltip="title">标题</san-th>
+                        <san-th tooltip="tag">标签</san-th>
+                        <san-th tooltip="desc">描述</san-th>
+                        <san-th tooltip="operate">操作</san-th>
+                    </san-tr>
+                </san-thead>
+                <san-tbody>
+                    <san-tr san-for="item in list">
+                        <san-td>{{item.title}}</san-td>
+                        <san-td>{{item.tagId}}</san-td>
+                        <san-td>{{item.desc}}</san-td>
+                        <san-td>
+                            <router-link to="/edit/{{item.id}}">
+                                <icon-button variants="info">
+                                    mode_edit
+                                </icon-button>
+                            </router-link>
+                        </san-td>
+                    </san-tr>
+                </san-tbody>
+            </san-table>
+        </san-paper>
+    </div>
+</template>
+<script type="text/ecmascript-6">
+    import {Table, THead, TFoot, TBody, TR, TD, TH} from 'san-mui/lib/Table';
+    import Paper from 'san-mui/lib/Paper';
+    import {list, tags} from '../../data';
+    import {Link} from 'san-router';
+    import Button from 'san-mui/lib/Button';
+    import {IconButton} from 'san-mui/lib/Button';
+    export default {
+        components: {
+            'router-link': Link,
+            'ui-button': Button,
+            'icon-button': IconButton,
+            'san-paper': Paper,
+            'san-table': Table,
+            'san-tr': TR,
+            'san-th': TH,
+            'san-td': TD,
+            'san-tbody': TBody,
+            'san-thead': THead,
+            'san-tfoot': TFoot
+        },
+        initData() {
+            return {
+                list: list,
+                tags: tags,
+                tagId: 0
+            }
+        },
+        route() {
+            // 获取 route 参数
+            let tagId = this.data.get('route').query['tag_id'];
+            if (tagId !== undefined && tagId !== 0) {
+                tagId = Number(tagId);
+                const filters = list.filter(item => {
+                    return item.tagId == tagId;
+                });
+                this.data.set('list', filters);
+            }
+            else {
+                this.data.set('list', list);
+            }
+        },
+        attached() {
+        }
+    }
+</script>
+<style>
+    .btn-group {
+        margin-bottom: 20px;
+    }
+    .btn-group .add {
+        float: right;
+    }
+</style>
