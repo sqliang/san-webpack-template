@@ -1,21 +1,6 @@
 <template>
     <div class="about">
         <h3 class="about-title">常用技术周刊</h3>
-        <san-row gutter="{{16}}">
-            <san-col span="8">
-                <san-paper class="paper-card" zDepth="3">
-                    <div class="item">
-                        <div class="logo">
-                            <img src="{{efe}}">
-                            FEX技术周刊
-                        </div>
-                        <div class="desc">
-                            <p>由百度多个遵循统一技术体系的前端团队所组成</p>
-                        </div>
-                    </div>
-                </san-paper>
-            </san-col>
-        </san-row>
         <h3 class="about-title">常用前端链接</h3>
         <san-row gutter="{{16}}">
             <san-col span="8">
@@ -221,6 +206,7 @@
     import {Row,Col} from 'san-mui/lib/Grid';
     import Paper from 'san-mui/lib/Paper';
     import efe from './efe-favicon.png';
+    import {techWeekly, devArgs, devSns} from '../../data';
     export default {
         components: {
             'san-row': Row,
@@ -230,7 +216,10 @@
         initData() {
             return {
                 name: 'sqliang',
-                efe: efe
+                efe: efe,
+                techWeekly: techWeekly,
+                devArgs: devArgs,
+                devSns: devSns
             };
         },
         route() {
